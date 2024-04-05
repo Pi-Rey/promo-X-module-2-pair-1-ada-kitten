@@ -56,3 +56,23 @@ Sus ojos son grandes y las orejas resultan largas y en punta.
 </li>`;
 
 jsList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+//viernes 05 abril
+const formSection = document.querySelector('.js-new-form');
+const menuPlus = document.querySelector('.js-menu');
+
+menuPlus.addEventListener('click', (event)=>{
+    formSection.classList.toggle('collapsed');
+});
+
+//La clase .js-input-desc está borrada pero iba en la linea 66 del HTML
+/*const inputPrueba = document.querySelector('.js-input-desc');
+const inputPruebaValue = inputPrueba.value;*/
+
+const btnCancel = document.querySelector('.js-btn-cancel');
+btnCancel.addEventListener('click', (event)=>{
+    event.preventDefault();
+    formSection.classList.add('collapsed');
+
+    /*inputPruebaValue = "HOLAAAA";*/
+});
