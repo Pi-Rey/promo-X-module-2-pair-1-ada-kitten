@@ -27,6 +27,25 @@ const kittenThirdDesc =
   Sus ojos son grandes y las orejas resultan largas y en punta.`;
 const kittenThirdRace = 'Maine Coon';
 
+// function renderKiteen(url, name, race, desc){
+//   jsList.innerHTML+=`<li class="card">
+//   <article>
+//     <img
+//     class="card_img"
+//     src="${url}"
+//     alt="sphynx-cat"
+//   />
+//   <h3 class="card_title">${name}</h3>
+//   <h4 class="card_race">${race}</h4>
+//   <p class="card_description js_description_two">
+//   ${desc}
+//   </p>
+//   </article>
+//   </li>`;
+//   return jsList;
+// }
+// renderKiteen(https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=600, fifi, prueba, otroa gato de peueba 2);
+
 const kittenOne = `<li class="card">
 <article>
   <img
@@ -81,10 +100,25 @@ const nameInput = document.querySelector('.js_name');
 const raceInput = document.querySelector('.js_race');
 const descripInput = document.querySelector('.js_description');
 
-menuPlus.addEventListener('click', (event)=>{
-    event.preventDefault;
-    formSection.classList.toggle('collapsed');
-});
+// clase 10/04 creamos funciones
+function showNewCatForm (){
+  formSection.classList.remove('collapsed');
+}
+
+function hideNewCatForm (){
+  formSection.classList.add('collapsed');
+}
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (formSection.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+}
+
+menuPlus.addEventListener('click', handleClickNewCatForm); 
 
 const btnCancel = document.querySelector('.js-btn-cancel');
 btnCancel.addEventListener('click', (event)=>{
@@ -118,3 +152,52 @@ btnSearch.addEventListener('click', (event)=>{
         jsList.innerHTML = `${kittenThree}`;
       }
 });
+
+const btnNew = document.querySelector('.js-btn-add');
+
+//modifica el evento para cumplir una función manejadora
+function addNewKitten(event){
+  event.preventDefault();
+  const valueImg = pictureInput.value;
+  const valueName = nameInput.value;
+  const valueRace = raceInput.value;
+  const valueDesc = descripInput.value;
+
+  jsList.innerHTML += `<li class="card">
+  <article>
+    <img
+    class="card_img"
+    src="${valueImg}"
+    alt="sphynx-cat"
+  />
+  <h3 class="card_title">${valueName}</h3>
+  <h4 class="card_race">${valueRace}</h4>
+  <p class="card_description js_description_two">
+  ${valueDesc}
+  </p>
+  </article>
+  </li>`;
+  console.log(jsList);
+  return jsList;
+};
+btnNew.addEventListener('click', addNewKitten);
+
+// probando cosas
+// function renderKiteen(url, name, race, desc){
+//   jsList.innerHTML+=`<li class="card">
+//   <article>
+//     <img
+//     class="card_img"
+//     src="${valueImg}"
+//     alt="sphynx-cat"
+//   />
+//   <h3 class="card_title">${valueName}</h3>
+//   <h4 class="card_race">${valueRace}</h4>
+//   <p class="card_description js_description_two">
+//   ${valueDesc}
+//   </p>
+//   </article>
+//   </li>`;
+//   return jsList;
+// }
+// renderKiteen(https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=600, fifi, prueba, otroa gato de peueba 2);
