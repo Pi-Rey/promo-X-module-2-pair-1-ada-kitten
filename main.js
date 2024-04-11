@@ -42,11 +42,11 @@ function renderKiteen(url, name, race, desc){
    </p>
    </article>
    </li>`;
-   return jsList;
+   return jsList.innerHTML;
  }
  
 
-const kittenOne = `<li class="card">
+/*const kittenOne = `<li class="card">
 <article>
   <img
     class="card_img"
@@ -89,10 +89,13 @@ ${kittenThirdDesc}
 </p>
 </article>
 </li>`;
+*/
 
-jsList.innerHTML = kittenOne + kittenTwo + kittenThree;
+//jsList.innerHTML = kittenOne + kittenTwo + kittenThree ;
 
-renderKiteen(kittenSecondImage, kittenOneName, kittenSecondRace, kittenThirdDesc);
+//renderKiteen(kittenSecondImage, kittenOneName, kittenSecondRace, kittenThirdDesc);
+
+jsList.innerHTML = renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc) + renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc) + renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
 
 //viernes 05 abril
 const formSection = document.querySelector('.js-new-form');
