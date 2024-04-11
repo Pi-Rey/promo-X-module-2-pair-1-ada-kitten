@@ -28,23 +28,37 @@ const kittenThirdDesc =
 const kittenThirdRace = 'Maine Coon';
 
 function renderKiteen(url, name, race, desc){
- jsList.innerHTML+=`<li class="card">
-   <article>
-     <img
-     class="card_img"
-     src="${url}"
-     alt="sphynx-cat"
-   />
-   <h3 class="card_title">${name}</h3>
-   <h4 class="card_race">${race}</h4>
-   <p class="card_description js_description_two">
-   ${desc}
-   </p>
-   </article>
-   </li>`;
-   return jsList;
+    // jsList.innerHTML +=  `<li class="card">
+    // <article>
+    //   <img
+    //   class="card_img"
+    //   src="${url}"
+    //   alt="sphynx-cat"
+    // />
+    // <h3 class="card_title">${name}</h3>
+    // <h4 class="card_race">${race}</h4>
+    // <p class="card_description js_description_two">
+    // ${desc}
+    // </p>
+    // </article>
+    // </li>`;
+    
+  const cards = `<li class="card">
+  <article>
+    <img
+    class="card_img"
+    src="${url}"
+    alt="sphynx-cat"
+  />
+  <h3 class="card_title">${name}</h3>
+  <h4 class="card_race">${race}</h4>
+  <p class="card_description js_description_two">
+  ${desc}
+  </p>
+  </article>
+  </li>`;
+   return cards;
  }
-
 
 /*const kittenOne = `<li class="card">
 <article>
@@ -90,10 +104,15 @@ ${kittenThirdDesc}
 </article>
 </li>`;*/
 
-//jsList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
 renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc);
+const kittenOne = renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc);
 renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc);
+const kittenTwo = renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc);
 renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
+const kittenThree = renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
+
+jsList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 //viernes 05 abril
 const formSection = document.querySelector('.js-new-form');
@@ -133,27 +152,31 @@ btnCancel.addEventListener('click', (event)=>{
     formSection.classList.add('collapsed');
 });
 
-const input_search_desc = document.querySelector('.js_in_search_desc');
+const inputSearchDesc = document.querySelector('.js_in_search_desc');
 const btnSearch = document.querySelector('.js_search');
 
 btnSearch.addEventListener('click', (event)=>{
     event.preventDefault();
 
+    const valueDescrSearchText = inputSearchDesc.value;
 
-    const descrSearchText = input_search_desc.value;
-    console.log ("Esto por qué va mal? " + descrSearchText);
 
-    if ( kittenOneDesc.includes(descrSearchText) ) {
-        jsList.innerHTML = `${kittenOne}`;
+    let resultCats = '';
+
+    if ( kittenOneDesc.includes(valueDescrSearchText) ) {
+        resultCats += kittenOne;
+        console.log(jsList);
       }
       //Cambiar esto después de hacer lo de hoy martes
 
-    if( kittenSecondDesc.includes(descrSearchText) ) {
-        jsList.innerHTML = `${kittenTwo}`;
+    if ( kittenSecondDesc.includes(valueDescrSearchText) ) {
+        resultCats += kittenTwo;
       }
-      if( kittenThirdDesc.includes(descrSearchText) ) {
-        jsList.innerHTML = `${kittenThree}`;
+      if ( kittenThirdDesc.includes(valueDescrSearchText) ) {
+        resultCats += kittenThree;
       }
+
+      jsList.innerHTML = resultCats
 });
 
 const btnNew = document.querySelector('.js-btn-add');
@@ -186,3 +209,4 @@ function addNewKitten(event){
   return jsList;*/
 };
 btnNew.addEventListener('click', addNewKitten);
+console.log(jsList);
