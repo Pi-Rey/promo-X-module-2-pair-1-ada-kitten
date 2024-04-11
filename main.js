@@ -27,26 +27,26 @@ const kittenThirdDesc =
   Sus ojos son grandes y las orejas resultan largas y en punta.`;
 const kittenThirdRace = 'Maine Coon';
 
-// function renderKiteen(url, name, race, desc){
-//   jsList.innerHTML+=`<li class="card">
-//   <article>
-//     <img
-//     class="card_img"
-//     src="${url}"
-//     alt="sphynx-cat"
-//   />
-//   <h3 class="card_title">${name}</h3>
-//   <h4 class="card_race">${race}</h4>
-//   <p class="card_description js_description_two">
-//   ${desc}
-//   </p>
-//   </article>
-//   </li>`;
-//   return jsList;
-// }
-// renderKiteen(https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=600, fifi, prueba, otroa gato de peueba 2);
+function renderKiteen(url, name, race, desc){
+ jsList.innerHTML+=`<li class="card">
+   <article>
+     <img
+     class="card_img"
+     src="${url}"
+     alt="sphynx-cat"
+   />
+   <h3 class="card_title">${name}</h3>
+   <h4 class="card_race">${race}</h4>
+   <p class="card_description js_description_two">
+   ${desc}
+   </p>
+   </article>
+   </li>`;
+   return jsList;
+ }
 
-const kittenOne = `<li class="card">
+
+/*const kittenOne = `<li class="card">
 <article>
   <img
     class="card_img"
@@ -58,9 +58,9 @@ const kittenOne = `<li class="card">
   <p class="card_description js_description_one">${kittenOneDesc}
    </p>
 </article>
-</li>`;
+</li>`;*/
 
-const kittenTwo = `<li class="card">
+/*const kittenTwo = `<li class="card">
 <article>
   <img
   class="card_img"
@@ -73,9 +73,9 @@ const kittenTwo = `<li class="card">
 ${kittenSecondDesc}
 </p>
 </article>
-</li>`;
+</li>`;*/
 
-const kittenThree = `<li class="card">
+/*const kittenThree = `<li class="card">
 <article>
 <img
 class="card_img"
@@ -88,9 +88,12 @@ alt="maine-coon-cat"
 ${kittenThirdDesc}
 </p>
 </article>
-</li>`;
+</li>`;*/
 
-jsList.innerHTML = kittenOne + kittenTwo + kittenThree;
+//jsList.innerHTML = kittenOne + kittenTwo + kittenThree;
+renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc);
+renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc);
+renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
 
 //viernes 05 abril
 const formSection = document.querySelector('.js-new-form');
@@ -163,7 +166,9 @@ function addNewKitten(event){
   const valueRace = raceInput.value;
   const valueDesc = descripInput.value;
 
-  jsList.innerHTML += `<li class="card">
+  renderKiteen(valueImg, valueName, valueRace, valueDesc);
+
+  /*jsList.innerHTML += `<li class="card">
   <article>
     <img
     class="card_img"
@@ -178,26 +183,6 @@ function addNewKitten(event){
   </article>
   </li>`;
   console.log(jsList);
-  return jsList;
+  return jsList;*/
 };
 btnNew.addEventListener('click', addNewKitten);
-
-// probando cosas
-// function renderKiteen(url, name, race, desc){
-//   jsList.innerHTML+=`<li class="card">
-//   <article>
-//     <img
-//     class="card_img"
-//     src="${valueImg}"
-//     alt="sphynx-cat"
-//   />
-//   <h3 class="card_title">${valueName}</h3>
-//   <h4 class="card_race">${valueRace}</h4>
-//   <p class="card_description js_description_two">
-//   ${valueDesc}
-//   </p>
-//   </article>
-//   </li>`;
-//   return jsList;
-// }
-// renderKiteen(https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=600, fifi, prueba, otroa gato de peueba 2);
