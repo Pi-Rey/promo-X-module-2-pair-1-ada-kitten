@@ -137,14 +137,14 @@ ${kittenThirdDesc}
 </li>`;*/
 
 
-renderKiteen(kittenData_1);
+// renderKiteen(kittenData_1);
 // const kittenOne = renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc);
-renderKiteen(kittenData_2);
+// renderKiteen(kittenData_2);
 // const kittenTwo = renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc);
-renderKiteen(kittenData_3);
+// renderKiteen(kittenData_3);
 // const kittenThree = renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
 
-jsList.innerHTML = kittenData_1 + kittenData_2 + kittenData_3;
+jsList.innerHTML = renderKiteen(kittenData_1) + renderKiteen(kittenData_2) + renderKiteen(kittenData_3);
 // Probar por qué no aparecen los objetos?
 
 //viernes 05 abril
@@ -191,28 +191,33 @@ const btnSearch = document.querySelector('.js_search');
 btnSearch.addEventListener('click', (event)=>{
     event.preventDefault();
 
+    // aquí hay que modificar/ da un error
     const valueDescrSearchText = inputSearchDesc.value;
-    const lowerDescOne= kittenOneDesc.toLowerCase();
-    const lowerDescTwo= kittenSecondDesc.toLowerCase();
-    const lowerDescThree= kittenThirdDesc.toLowerCase();
-    console.log(lowerDescOne);
+    const lowerDescOne= kittenData_1.desc(toLowerCase());
+    const lowerDescTwo= kittenData_2.desc(toLowerCase());
+    const lowerDescThree= kittenData_3.desc(toLowerCase());
+    
 
     let resultCats = '';
 
     if ( lowerDescOne.includes(valueDescrSearchText) ) {
-        resultCats += kittenOne;
+        // resultCats += kittenOne;
+        jsList.innerHTML += renderKiteen(kittenData_1);
+      
         console.log(jsList);
       }
       //Cambiar esto después de hacer lo de hoy martes
 
     if ( lowerDescTwo.includes(valueDescrSearchText) ) {
-        resultCats += kittenTwo;
+        // resultCats += kittenTwo;
+        jsList.innerHTML += renderKiteen(kittenData_2);
       }
       if ( lowerDescThree.includes(valueDescrSearchText) ) {
-        resultCats += kittenThree;
+        jsList.innerHTML += renderKiteen(kittenData_3);
+        // resultCats += kittenThree;
       }
 
-      jsList.innerHTML = resultCats
+      // jsList.innerHTML = resultCats
 });
 
 const btnNew = document.querySelector('.js-btn-add');
