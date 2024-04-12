@@ -193,18 +193,16 @@ btnSearch.addEventListener('click', (event)=>{
 
     // aquí hay que modificar/ da un error
     const valueDescrSearchText = inputSearchDesc.value;
-    const lowerDescOne= kittenData_1.desc(toLowerCase());
-    const lowerDescTwo= kittenData_2.desc(toLowerCase());
-    const lowerDescThree= kittenData_3.desc(toLowerCase());
-    
+    const lowerDescOne= kittenData_1.desc.toLowerCase();
+    const lowerDescTwo= kittenData_2.desc.toLowerCase();
+    const lowerDescThree= kittenData_3.desc.toLowerCase();
+    console.log(lowerDescOne);
 
     let resultCats = '';
 
     if ( lowerDescOne.includes(valueDescrSearchText) ) {
         // resultCats += kittenOne;
         jsList.innerHTML += renderKiteen(kittenData_1);
-      
-        console.log(jsList);
       }
       //Cambiar esto después de hacer lo de hoy martes
 
