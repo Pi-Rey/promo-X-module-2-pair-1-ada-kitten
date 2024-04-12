@@ -4,12 +4,27 @@ const jsList = document.querySelector('.js-list');
 
 /* Agregar el código del li desde HTMl 
 Repetir este proceso por cada gatito */
+const kittenData_1 ={
+  image: 'https://dev.adalab.es/gato-siames.webp',
+  name: 'Anastacio',
+  desc: ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.',
+  race: 'Siamés',
+};
 
 const kittenOneImage = 'https://dev.adalab.es/gato-siames.webp';
 const kittenOneName = 'Anastacio';
 const kittenOneDesc =
   ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
 const kittenOneRace = 'Siamés';
+
+const kittenData_2 ={
+  image: 'https://dev.adalab.es/sphynx-gato.webp',
+  name: 'Fiona',
+  desc: ` Produce fascinación y curiosidad. Exótico, raro, bello, extraño...
+  hasta con pinta de alienígena han llegado a definir a esta raza
+  gatuna que se caracteriza por la «ausencia» de pelo.`,
+  race: 'Sphynx',
+};
 
 const kittenSecondImage = "https://dev.adalab.es/sphynx-gato.webp";
 const kittenSecondName = 'Fiona';
@@ -19,6 +34,15 @@ const kittenSecondDesc =
   gatuna que se caracteriza por la «ausencia» de pelo.`;
 const kittenSecondRace = 'Sphynx';
 
+const kittenData_3 ={
+  image: 'https://dev.adalab.es/maine-coon-cat.webp',
+  name: 'Cielo',
+  desc: ` Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
+  bella mirada se ha convertido en una de sus señas de identidad.
+  Sus ojos son grandes y las orejas resultan largas y en punta.`,
+  race: 'Maine Coon',
+};
+
 const kittenThirdImage = "https://dev.adalab.es/maine-coon-cat.webp";
 const kittenThirdName = 'Cielo';
 const kittenThirdDesc =
@@ -27,7 +51,15 @@ const kittenThirdDesc =
   Sus ojos son grandes y las orejas resultan largas y en punta.`;
 const kittenThirdRace = 'Maine Coon';
 
-function renderKiteen(url, name, race, desc){
+const kittenData = {
+  image:" ",
+  name: " ",
+  desc: " ",
+  race: " ",
+}
+function renderKiteen(kittenData){
+
+
     // jsList.innerHTML +=  `<li class="card">
     // <article>
     //   <img
@@ -47,13 +79,13 @@ function renderKiteen(url, name, race, desc){
   <article>
     <img
     class="card_img"
-    src="${url}"
+    src="${kittenData.image}"
     alt="sphynx-cat"
   />
-  <h3 class="card_title">${name}</h3>
-  <h4 class="card_race">${race}</h4>
+  <h3 class="card_title">${kittenData.name}</h3>
+  <h4 class="card_race">${kittenData.race}</h4>
   <p class="card_description js_description_two">
-  ${desc}
+  ${kittenData.desc}
   </p>
   </article>
   </li>`;
@@ -105,14 +137,15 @@ ${kittenThirdDesc}
 </li>`;*/
 
 
-renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc);
-const kittenOne = renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc);
-renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc);
-const kittenTwo = renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc);
-renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
-const kittenThree = renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
+renderKiteen(kittenData_1);
+// const kittenOne = renderKiteen(kittenOneImage, kittenOneName, kittenOneRace, kittenOneDesc);
+renderKiteen(kittenData_2);
+// const kittenTwo = renderKiteen(kittenSecondImage, kittenSecondName, kittenSecondRace, kittenSecondDesc);
+renderKiteen(kittenData_3);
+// const kittenThree = renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
 
-jsList.innerHTML = kittenOne + kittenTwo + kittenThree;
+jsList.innerHTML = kittenData_1 + kittenData_2 + kittenData_3;
+// Probar por qué no aparecen los objetos?
 
 //viernes 05 abril
 const formSection = document.querySelector('.js-new-form');
@@ -159,20 +192,23 @@ btnSearch.addEventListener('click', (event)=>{
     event.preventDefault();
 
     const valueDescrSearchText = inputSearchDesc.value;
-
+    const lowerDescOne= kittenOneDesc.toLowerCase();
+    const lowerDescTwo= kittenSecondDesc.toLowerCase();
+    const lowerDescThree= kittenThirdDesc.toLowerCase();
+    console.log(lowerDescOne);
 
     let resultCats = '';
 
-    if ( kittenOneDesc.includes(valueDescrSearchText) ) {
+    if ( lowerDescOne.includes(valueDescrSearchText) ) {
         resultCats += kittenOne;
         console.log(jsList);
       }
       //Cambiar esto después de hacer lo de hoy martes
 
-    if ( kittenSecondDesc.includes(valueDescrSearchText) ) {
+    if ( lowerDescTwo.includes(valueDescrSearchText) ) {
         resultCats += kittenTwo;
       }
-      if ( kittenThirdDesc.includes(valueDescrSearchText) ) {
+      if ( lowerDescThree.includes(valueDescrSearchText) ) {
         resultCats += kittenThree;
       }
 
@@ -188,8 +224,9 @@ function addNewKitten(event){
   const valueName = nameInput.value;
   const valueRace = raceInput.value;
   const valueDesc = descripInput.value;
-
-  renderKiteen(valueImg, valueName, valueRace, valueDesc);
+  
+  jsList.innerHTML += renderKiteen (valueImg, valueName, valueRace,valueDesc);
+  
 
   /*jsList.innerHTML += `<li class="card">
   <article>
