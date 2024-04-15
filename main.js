@@ -190,7 +190,7 @@ const btnSearch = document.querySelector('.js_search');
 
 btnSearch.addEventListener('click', (event)=>{
     event.preventDefault();
-
+    jsList.innerHTML = "";
     // aquí hay que modificar/ da un error
     const valueDescrSearchText = inputSearchDesc.value;
     const lowerDescOne= kittenData_1.desc.toLowerCase();
