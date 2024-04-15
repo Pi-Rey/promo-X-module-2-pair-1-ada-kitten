@@ -11,11 +11,11 @@ const kittenData_1 ={
   race: 'Siamés',
 };
 
-const kittenOneImage = 'https://dev.adalab.es/gato-siames.webp';
-const kittenOneName = 'Anastacio';
-const kittenOneDesc =
-  ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
-const kittenOneRace = 'Siamés';
+// const kittenOneImage = 'https://dev.adalab.es/gato-siames.webp';
+// const kittenOneName = 'Anastacio';
+// const kittenOneDesc =
+//   ' Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
+// const kittenOneRace = 'Siamés';
 
 const kittenData_2 ={
   image: 'https://dev.adalab.es/sphynx-gato.webp',
@@ -26,13 +26,13 @@ const kittenData_2 ={
   race: 'Sphynx',
 };
 
-const kittenSecondImage = "https://dev.adalab.es/sphynx-gato.webp";
-const kittenSecondName = 'Fiona';
-const kittenSecondDesc =
-  ` Produce fascinación y curiosidad. Exótico, raro, bello, extraño...
-  hasta con pinta de alienígena han llegado a definir a esta raza
-  gatuna que se caracteriza por la «ausencia» de pelo.`;
-const kittenSecondRace = 'Sphynx';
+// const kittenSecondImage = "https://dev.adalab.es/sphynx-gato.webp";
+// const kittenSecondName = 'Fiona';
+// const kittenSecondDesc =
+//   ` Produce fascinación y curiosidad. Exótico, raro, bello, extraño...
+//   hasta con pinta de alienígena han llegado a definir a esta raza
+//   gatuna que se caracteriza por la «ausencia» de pelo.`;
+// const kittenSecondRace = 'Sphynx';
 
 const kittenData_3 ={
   image: 'https://dev.adalab.es/maine-coon-cat.webp',
@@ -43,13 +43,13 @@ const kittenData_3 ={
   race: 'Maine Coon',
 };
 
-const kittenThirdImage = "https://dev.adalab.es/maine-coon-cat.webp";
-const kittenThirdName = 'Cielo';
-const kittenThirdDesc =
-  ` Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
-  bella mirada se ha convertido en una de sus señas de identidad.
-  Sus ojos son grandes y las orejas resultan largas y en punta.`;
-const kittenThirdRace = 'Maine Coon';
+// const kittenThirdImage = "https://dev.adalab.es/maine-coon-cat.webp";
+// const kittenThirdName = 'Cielo';
+// const kittenThirdDesc =
+//   ` Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
+//   bella mirada se ha convertido en una de sus señas de identidad.
+//   Sus ojos son grandes y las orejas resultan largas y en punta.`;
+// const kittenThirdRace = 'Maine Coon';
 
 const kittenData = {
   image:" ",
@@ -57,6 +57,10 @@ const kittenData = {
   desc: " ",
   race: " ",
 }
+
+const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+
+
 function renderKiteen(kittenData){
 
 
@@ -145,6 +149,7 @@ ${kittenThirdDesc}
 // const kittenThree = renderKiteen(kittenThirdImage, kittenThirdName, kittenThirdRace, kittenThirdDesc);
 
 jsList.innerHTML = renderKiteen(kittenData_1) + renderKiteen(kittenData_2) + renderKiteen(kittenData_3);
+console.log(kittenDataList);
 // Probar por qué no aparecen los objetos?
 
 //viernes 05 abril
@@ -187,16 +192,23 @@ btnCancel.addEventListener('click', (event)=>{
 
 const inputSearchDesc = document.querySelector('.js_in_search_desc');
 const btnSearch = document.querySelector('.js_search');
+const inputSearchRace = document.querySelector('.js_in_search_race');
 
 btnSearch.addEventListener('click', (event)=>{
     event.preventDefault();
     jsList.innerHTML = "";
     // aquí hay que modificar/ da un error
     const valueDescrSearchText = inputSearchDesc.value;
+    const valueRaceSearchText = inputSearchRace.value;
+    const resultText = document.querySelector('.js_search_result');
+
     const lowerDescOne= kittenData_1.desc.toLowerCase();
     const lowerDescTwo= kittenData_2.desc.toLowerCase();
     const lowerDescThree= kittenData_3.desc.toLowerCase();
     console.log(lowerDescOne);
+    const lowerRacecOne= kittenData_1.race.toLowerCase();
+    const lowerRaceTwo= kittenData_2.race.toLowerCase();
+    const lowerRaceThree= kittenData_3.race.toLowerCase();
 
     let resultCats = '';
 
@@ -215,6 +227,29 @@ btnSearch.addEventListener('click', (event)=>{
         // resultCats += kittenThree;
       }
 
+      // textos de resultado de busqueda. Me obliga a poner ambos campos 
+      if (valueDescrSearchText === "" ){
+        resultText.innerHTML = 'Te falta información de la descripción ';
+        console.log(' Te falta info de la descripción')
+      } if (valueRaceSearchText === "" ){
+        resultText.innerHTML += 'Te falta información de la raza';
+        console.log('Te fala información de la raza');
+      }
+
+      if ( lowerRacecOne.includes(valueRaceSearchText) ) {
+        // resultCats += kittenOne;
+        jsList.innerHTML += renderKiteen(kittenData_1);
+      }
+      //Cambiar esto después de hacer lo de hoy martes
+
+    if ( lowerRaceTwo.includes(valueRaceSearchText) ) {
+        // resultCats += kittenTwo;
+        jsList.innerHTML += renderKiteen(kittenData_2);
+      }
+      if ( lowerRaceThree.includes(valueRaceSearchText) ) {
+        jsList.innerHTML += renderKiteen(kittenData_3);
+        // resultCats += kittenThree;
+      }
       // jsList.innerHTML = resultCats
 });
 
